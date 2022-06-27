@@ -1,0 +1,98 @@
+<nav class="flex items-center justify-between flex-wrap bg-teal-900 p-3">
+  <mat-toolbar class="bg-teal-900">
+    <mat-toolbar-row class="p-0">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        class="text-teal-200"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
+      <div class="flex items-center flex-shrink-0 text-white mr-6 ml-3">
+        <img
+          src="https://img.icons8.com/external-sketchy-juicy-fish/40/undefined/external-code-cryptography-sketchy-sketchy-juicy-fish.png"
+        />
+        <!-- <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg> -->
+        <span class="font-semibold text-xl tracking-tight pl-1"
+          >GreenCoder</span
+        >
+      </div>
+      <!-- <div class="block lg:hidden">
+        <button
+          class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
+        >
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div> -->
+      <div class="w-full flex-grow flex items-center">
+        <div class="text-sm flex-grow text-teal-200">
+          <a mat-button class="hidden lg:inline-block hover:text-teal-50">
+            Inicio
+          </a>
+          <a mat-button class="hidden lg:inline-block hover:text-teal-50">
+            Alumnos
+          </a>
+          <a mat-button class="hidden lg:inline-block hover:text-teal-50">
+            Cursos
+          </a>
+        </div>
+
+        <!-- <div class="text-sm lg:flex-grow">
+          <a
+            href="#!"
+            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+          >
+            Inicio
+          </a>
+          <a
+            href="#alumnos"
+            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+          >
+            Alumnos
+          </a>
+          <a
+            href="#cursos"
+            class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white"
+          >
+            Cursos
+          </a>
+        </div> -->
+        <div>
+          <div class="flex justify-center">
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="menu"
+              aria-label="Example icon-button with a menu"
+            >
+              <!-- <mat-icon>more_vert</mat-icon> -->
+              <app-avatar class="text-teal-200"></app-avatar>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>
+                <mat-icon>badge</mat-icon>
+                <span>Perfil</span>
+              </button>
+              <button mat-menu-item disabled>
+                <mat-icon>key</mat-icon>
+                <span>Contraeñas</span>
+              </button>
+              <button mat-menu-item>
+                <mat-icon>close</mat-icon>
+                <span>Salir</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</nav>

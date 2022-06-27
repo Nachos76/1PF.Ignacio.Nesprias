@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+ 
+  <mat-sidenav
+    #drawer
+    class="md:flex w-48"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    class="w-48 bg-teal-300"
+  >
+    <!-- <mat-toolbar>Menu</mat-toolbar> -->
+    <mat-nav-list>
+      <a mat-list-item href="#">
+        <mat-icon aria-label="Listado de alumnos">groups</mat-icon>
+        Listado Alumnos</a
+      >
+      <a mat-list-item href="#">
+        <mat-icon aria-label="Nuevo alumno">person_add</mat-icon>
+        Nuevo Alumno</a
+      >
+      <a mat-list-item href="#"
+        ><mat-icon aria-label="Listado de cursos">cast_for_education</mat-icon>
+        Listado Cursos</a
+      >
+      <a mat-list-item (click)="drawer.toggle()">
+        <mat-icon aria-label="Listado de cursos">close</mat-icon>
+        Cerrar</a
+      >
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- Add Content Here -->
+    <div class="max-w-full w-screen bg-teal-100 flex flex-grow flex-row">
+      <app-main></app-main>
+    </div>
+    <span>ho</span>
+  </mat-sidenav-content>
+</mat-sidenav-container>
