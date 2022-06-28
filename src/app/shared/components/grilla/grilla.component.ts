@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { alumno } from '../../../models/alumno.model';
 import { ConfirmDialogComponent } from '../Dialogs/confirm-dialog/confirm-dialog.component';
 import { MatTable } from '@angular/material/table';
 
@@ -25,22 +24,12 @@ export class GrillaComponent implements OnInit {
   
 @ViewChild(MatTable) grilla?: MatTable<any>;  
 
-  private enterAnimationDuration: string='3000ms'
-  private exitAnimationDuration: string = '3000ms'
-  
+ 
   constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
-  // openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-  //   this.dialog.open(DialogAnimationsExampleDialog, {
-  //     width: '250px',
-  //     enterAnimationDuration,
-  //     exitAnimationDuration,
-  //   });
-
-  // }
   seleccionarItem(item:any)
   { 
     this.enviarSeleccionado.emit(item);  
@@ -79,15 +68,12 @@ export class GrillaComponent implements OnInit {
 
   }
 
-  agregarAlumno ($event: any)
-  { 
-    this.datos.push($event); 
-    console.log($event);
-    this.grilla?.renderRows()
+ agregarItem(){
+    this.agregarSeleccionado.emit(true);  
   }
 
-  agregarItem(){
-    this.agregarSeleccionado.emit(true);  
+ renderRows(){
+    this.grilla?.renderRows()
   }
 }
 
