@@ -6,12 +6,8 @@ import {
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
 import { alumno } from 'src/app/models/alumno.model';
-// import {COMMA, ENTER} from '@angular/cdk/keycodes';
-// import {MatChipInputEvent} from '@angular/material/chips';
-
-// export interface Fruit {
-//   name: string;
-// }
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
 
 @Component({
   selector: 'app-formulario-alumno',
@@ -54,7 +50,7 @@ export class FormularioAlumnoComponent implements OnInit {
         Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
       ],
     ],
-    conocimientos: [['']],
+    conocimientos: [[]],
     cursos: [['']],
     imagen: [''],
     descripcion: [''],
@@ -84,12 +80,12 @@ export class FormularioAlumnoComponent implements OnInit {
   }
 
 
-  guardarAlumno() {
-    //console.log(this.formularioAlumno.value);
-    this.enviarNuevoAlumno.emit(this.formularioAlumno.value);
-    //this.showModal = !this.showModal;
-    this.formularioAlumno.reset();
-  }
+  // guardarAlumno() {
+  //   //console.log(this.formularioAlumno.value);
+  //   this.enviarNuevoAlumno.emit(this.formularioAlumno.value);
+  //   //this.showModal = !this.showModal;
+  //   this.formularioAlumno.reset();
+  // }
 
   cargarAlumnoParaEditar(alumno?: alumno) {
     if (alumno) {
@@ -115,27 +111,33 @@ export class FormularioAlumnoComponent implements OnInit {
     }
   }
 
-  // addOnBlur = true;
-  // readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  // fruits: Fruit[] = [{name: 'Lemon'}, {name: 'Lime'}, {name: 'Apple'}];
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
-  // add(event: MatChipInputEvent): void {
-  //   const value = (event.value || '').trim();
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
 
-  //   // Add our fruit
-  //   if (value) {
-  //     this.fruits.push({name: value});
-  //   }
+    if (value) {
+      this.conocimientos?.value.push(value);
+      this.conocimientos?.updateValueAndValidity();
+    }
 
-  //   // Clear the input value
-  //   event.chipInput!.clear();
-  // }
 
-  // remove(fruit: Fruit): void {
-  //   const index = this.fruits.indexOf(fruit);
+    // Clear the input value
+    event.chipInput!.clear();
+  }
 
-  //   if (index >= 0) {
-  //     this.fruits.splice(index, 1);
-  //   }
-  // }
+  remove(_conocimientos: string): void {
+    const index = this.conocimientos?.value.indexOf(_conocimientos);
+
+    if (index >= 0) {
+      this.conocimientos?.value.splice(index, 1);    // where index = index of removed element
+      this.conocimientos?.updateValueAndValidity();
+    }
+  }
+
+  // use getter method to access courseIds control value easily
+  get conocimientos() {
+  return this.formularioAlumno.get('conocimientos');
+}
 }

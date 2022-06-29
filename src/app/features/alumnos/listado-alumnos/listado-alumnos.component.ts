@@ -55,6 +55,7 @@ export class ListadoAlumnosComponent implements OnInit {
       // dialogConfig.disableClose = true;
       // dialogConfig.autoFocus = true;
      //dialogConfig.width='60%',
+     dialogConfig.panelClass="h-screen";
      dialogConfig.data = {
         title: 'Actualizar datos del alumno',
         message: '',

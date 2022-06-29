@@ -23,7 +23,7 @@
               ×
             </span>
         </button>
-        <img class="w-full h-44 object-scale-down object-center" src="{{(alumno.imagen)?alumno.imagen:defaultImagen}}" alt="avatar">
+        <img class="w-full h-44 object-scale-down object-center" src="{{(alumno.imagen)?reemplazarURL(alumno.imagen):defaultImagen}}" alt="avatar">
         <div class="flex items-center px-6 py-3 bg-gray-900">
             <i class="fa-solid fa-cake-candles text-white"></i>
             <h1 class="mx-3 text-white font-semibold text-lg">{{alumno.fechaNacimiento | date: "dd.MM.yyyy"}}
@@ -32,7 +32,7 @@
             
         </div>
         <div class="py-4 px-6">
-            <h1 class="text-2xl font-semibold text-teal-800">{{alumno.nombre}} <span>{{alumno.apellido | uppercase}}</span></h1>
+            <h1 class="text-2xl font-semibold text-teal-800">{{alumno.nombre | nombreApellido: alumno.apellido:"apellido" }} </h1>
             <div class="py-2 text-base text-teal-700">{{alumno.descripcion}}</div>
 
             <div class="py-2 text-base font-semibold text-teal-700">Conocimientos previos</div>
@@ -42,16 +42,16 @@
             <app-badge-list [items]="alumno.cursos"></app-badge-list>
 
             <div class="flex items-center mt-4 text-teal-700">
-                <i class="fa-solid fa-location-dot"></i>
-                <h1 class="px-2 text-sm">{{alumno.direccion}}</h1>
+              <mat-icon aria-label="Dirección" class=" px-2  mr-3">my_location</mat-icon>
+                <h1 class="px-2 text-sm m-0">{{alumno.direccion}}</h1>
             </div>
             <div class="flex items-center mt-4 text-teal-700">
-                <i class="fa-solid fa-envelope"></i>
-                <h1 class="px-2 text-sm">{{alumno.email}}</h1>
+              <mat-icon aria-label="Correo elect´ronico" class="px-2  mr-3">email</mat-icon>
+                <h1 class="px-2 text-sm m-0">{{alumno.email}}</h1>
             </div>
             <div class="flex items-center mt-4 text-teal-700">
-                <i class="fa-solid fa-phone"></i>
-                <h1 class="px-2 text-sm">{{alumno.telefono}}</h1>
+              <mat-icon aria-label="Teléfono" class="px-2  mr-3">phone</mat-icon>
+                <h1 class="px-2 text-sm m-0">{{alumno.telefono}}</h1>
             </div>
             
             <div class="flex items-center justify-end p-0 ">
@@ -64,21 +64,9 @@
                 </span>
             </div>
         </div>
-        <!-- <div class="flex items-center justify-end p-0 border-t border-solid border-slate-200 rounded-b">
-        <button class="text-red-500 background-transparent  uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
-          Cerrar
-        </button>
-      </div> -->
+
     </div>
-      <!--footer-->
-      <!-- <div class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
-        <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
-          Close
-        </button> -->
-        <!-- <button class="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" (click)="toggleModal()">
-          Save Changes
-        </button> -->
-      <!-- </div> -->
+
     </div>
   </div>
 </div>

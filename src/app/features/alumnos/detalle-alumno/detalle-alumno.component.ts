@@ -19,5 +19,9 @@ export class DetalleAlumnoComponent implements OnInit {
   toggleModal(){
     this.showModal = !this.showModal;
   }
+  
+  reemplazarURL(str:string){
+    return str.replace("https://getavataaars.com/", "https://avataaars.io/");
 
+ }
 }

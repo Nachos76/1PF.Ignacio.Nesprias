@@ -1,8 +1,6 @@
-
 <h1
   mat-dialog-title
   class="bg-teal-800 text-teal-300 uppercase font-medium tracking-wider text-xs text-left px-5 py-3 shadow rounded-lg overflow-hidden"
-  
 >
   {{ data.title }}
   <!-- <button mat-button class="close-icon text-xs float-right text-opacity-50 outline-none p-0 min-w-0 bg-teal-800 m-0" [mat-dialog-close]="false" >
@@ -43,32 +41,6 @@
         >
           Longitud minima de 3 carácteres</span
         >
-        <!-- <mat-form-field >
-                        <input
-                          matInputclass="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-500 focus:outline-none focus:ring-0 focus:border-teal-600 peer"
-                          placeholder="Nombre"
-                          formControlName="nombre"
-                          class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-500 focus:outline-none focus:ring-0 focus:border-teal-600 peer"
-                        />
-                        <mat-error
-                          *ngIf="
-                            formularioAlumno.controls['nombre'].hasError(
-                              'required'
-                            )
-                          "
-                        >
-                          Nombre es <strong>requerido</strong>
-                        </mat-error>
-                        <mat-error
-                          *ngIf="
-                            formularioAlumno.controls['nombre'].hasError(
-                              'minlength'
-                            )
-                          "
-                        >
-                          Longitud minima de <strong>3 carácteres</strong>
-                        </mat-error>
-                      </mat-form-field> -->
       </div>
       <div class="relative z-0 w-full mb-6 group">
         <input
@@ -180,8 +152,8 @@
           class="mt-2 text-sm text-red-600 dark:text-red-500"
           *ngIf="formularioAlumno.get('fechaNacimiento')?.errors?.['required'] && formularioAlumno.get('fechaNacimiento')?.touched "
         >
-          Fecha de nacimiento es requerido.  </span
-        >
+          Fecha de nacimiento es requerido.
+        </span>
         <span
           class="mt-2 text-sm text-red-600 dark:text-red-500"
           *ngIf="formularioAlumno.get('fechaNacimiento')?.errors?.['invalid'] && formularioAlumno.get('fechaNacimiento')?.touched "
@@ -311,7 +283,7 @@
       </div>
     </div>
     <div class="grid xl:grid-cols-2 xl:gap-6">
-      <div class="relative z-0 w-full mb-6 group">
+      <div class="relative z-0 w-full mb-0 group">
         <label
           for="descripcion"
           class="block mb-2 text-sm font-sm text-gray-500 dark:text-gray-400"
@@ -325,7 +297,7 @@
           formControlName="descripcion"
         ></textarea>
       </div>
-      <div class="relative z-0 w-full mb-6 group">
+      <div class="relative z-0 w-full mb-0 group">
         <label
           class="block mb-2 text-sm font-sm text-gray-500 dark:text-gray-400"
         >
@@ -333,7 +305,7 @@
         </label>
         <div class="mt-1 flex items-center">
           <app-avatar [imagen]="formularioAlumno.value.imagen"></app-avatar>
-          <div class="relative z-0 w-full mb-6 group ml-3">
+          <div class="relative z-0 w-full mb-0 group ml-3">
             <input
               type="text"
               name="imagen"
@@ -364,49 +336,42 @@
         </div>
       </div>
     </div>
-    <div class="grid xl:grid-cols-2 xl:gap-6">
-                    <!-- <div class="relative z-0 w-full mb-6 group"> -->
-                      <!-- <mat-form-field class="example-chip-list" appearance="fill">
-                        <mat-label>Conocimientos previos</mat-label>
-                        <mat-chip-list #chipList aria-label="Fruit selection">
-                          <mat-chip *ngFor="let fruit of fruits" (removed)="remove(fruit)" formControlName="conocimientos">
-                            {{fruit.name}}
-                            <button matChipRemove>
-                              <mat-icon>cancel</mat-icon>
-                            </button>
-                          </mat-chip>
-                          <input placeholder="New fruit..."
-                                 [matChipInputFor]="chipList"
-                                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                                 [matChipInputAddOnBlur]="addOnBlur"
-                                 (matChipInputTokenEnd)="add($event)">
-                        </mat-chip-list>
-                      </mat-form-field> -->
+    <div class="grid xl:grid-cols-1 xl:gap-6">
+      <div class="relative z-0 w-full mb-6 group">
+        <mat-form-field class="w-full bg-transparent" appearance="standard">
+          <mat-label>Conocimientos previos</mat-label>
+          <mat-chip-list
+            #chipList
+            aria-label="Fruit selection"
+            formControlName="conocimientos"
+          >
+            <mat-chip
+              *ngFor="let c of formularioAlumno.get('conocimientos')?.value"
+              (removed)="remove(c)"
+              class="bg-teal-100 text-teal-800"
+            >
+              {{ c }}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input
+              placeholder="..."
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)"
+            />
+          </mat-chip-list>
+          <mat-hint
+            >Listados de lenguages, frameworks y otras herramientas de
+            desarrollo que conoce y maneja. Ingrese una lista separada por
+            comas</mat-hint
+          >
+        </mat-form-field>
+      </div>
 
-                      <!-- <input
-                        type="text"
-                        name="conocimientos"
-                        id="conocimientos"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-500 focus:outline-none focus:ring-0 focus:border-teal-600 peer"
-                        placeholder=" "
-                        formControlName="conocimientos"
-                      />
-                      <label
-                        for="conocimientos"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-teal-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                        >Conocimientos</label
-                      >
-                      <span
-                        id="helper-text-explanation"
-                        class="mt-2 text-xs text-gray-500 dark:text-gray-400"
-                      >
-                        Listados de lenguages, frameworks y otras herramientas
-                        de desarrollo que conoce y maneja. Ingrese una lista
-                        separada por comas
-                      </span> -->
-                    <!-- </div> -->
-
-                    <!-- <div class="relative z-0 w-full mb-6 group">
+      <!-- <div class="relative z-0 w-full mb-6 group">
                       <input
                         type="text"
                         name="cursos"
@@ -427,15 +392,15 @@
                         Ingrese una lista separada por comas
                       </span>
                     </div>-->
-                  </div>  
+    </div>
   </form>
 </div>
 <div
   mat-dialog-actions
   class="flex flex-shrink-0 flex-wrap text-right justify-end p-4"
 >
-<div
-    class="flex-1  break-words mt-2 text-sm text-red-600 dark:text-red-500 mr-5"
+  <div
+    class="flex-1 break-words mt-2 text-sm text-red-600 dark:text-red-500 mr-5"
     *ngIf="formularioAlumno.invalid"
   >
     Los campos marcados con * son requeridos
@@ -457,5 +422,4 @@
       Guardar
     </button>
   </div>
-  
 </div>
